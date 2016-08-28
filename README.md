@@ -1,0 +1,1 @@
+# google-searcher-no-trace-plugin
