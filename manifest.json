@@ -1,7 +1,7 @@
 ﻿{
 	"manifest_version": 2,
 	"name": "caichuibin: chrome plugin viewer",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"background": { "scripts": ["background.js"] },
 	"permissions": ["tabs", "https://*.google.com/"],
 	"page_action": {

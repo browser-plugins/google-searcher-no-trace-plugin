@@ -1,20 +1,26 @@
-﻿console.log("get google search page content, 3.3V");
-
-console.log($('#ires'));
+﻿console.log("get google search page content, 0.0.4V");
 
 $('#ires').css({'background':'pink'});  
-$('#ires a').each(function(index) {
- //$(this).attr('href', $(this).attr('data-href'));
- //$(this).attr('href', '#');
- //$(this).attr('onmousedown', 'console.log("onmousedown"); return GSOnMouseDown(this); ');
- console.log(index + '.  '+$(this).attr('href'));
- //console.log(index + '.  '+$(this).attr('data-href'));
+$('#ires').unbind();
+$('#ires').unbind('onmousedown');
+$('#ires a[onmousedown][onmousedown!=""]').each(function(index) {   
+    console.log(index + '.  '+$(this).attr('href'));
+    var oldUrl=$(this).attr('href');
+    $(this).removeAttr('onmousedown');
+    $(this).removeAttr('href');
+    $(this).removeAttr('target');
+    $(this).attr('targetHref', oldUrl);
+    $(this).click(function(event) {
+        event.stopPropagation();
+        console.log('click event stop');
+    });
+     $(this).mousedown(function(event) {
+        event.stopPropagation();
+        console.log('mousedown event stop');
+        $(this).attr('href', $(this).attr('targetHref'));
+        $(this).attr('target', '_blank');
+        return false;
+    });
 });
-
-/*function GSOnMouseDown(obj){
-    //console.log('GSOnMouseDown:' + obj);
-    //$(obj).attr()
-    return false;
-}*/
 
 console.log('content_script run end');
